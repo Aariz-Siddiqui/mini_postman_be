@@ -18,6 +18,6 @@ const user = await User.findOne({ email });
 if (!user || !(await bcrypt.compare(password, user.password))) {
 return res.status(401).json({ message: 'Invalid credentials' });
 }
-const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+const token = jwt.sign({ id: user._id },"supersecretkey");
 res.json({ token });
 };
